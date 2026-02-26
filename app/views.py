@@ -1,5 +1,12 @@
 from app import app
 from flask import render_template, request, redirect, url_for, flash
+import datetime
+
+
+
+def format_date_joined(date):
+   return date.strftime("%B, %Y")
+
 
 
 ###
@@ -15,7 +22,7 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="Eve Adams")
 
 
 ###
@@ -27,6 +34,16 @@ def send_text_file(file_name):
     """Send your static text file."""
     file_dot_text = file_name + '.txt'
     return app.send_static_file(file_dot_text)
+
+
+
+@app.route('/profile/')
+def profile():
+    date_joined = datetime.date(2024, 5, 12)
+    formatted_date = format_date_joined(date_joined)
+
+    return render_template('profile.html',name="Eve Adams",username="AdamsSlay",location="Clarendon", date_joined=formatted_date, bio="I love long sessions of staring into the void. Only then do I find peace. I also like roses.", posts=1, following=100, followers=10000)
+    
 
 
 @app.after_request
@@ -45,3 +62,5 @@ def add_header(response):
 def page_not_found(error):
     """Custom 404 page."""
     return render_template('404.html'), 404
+
+

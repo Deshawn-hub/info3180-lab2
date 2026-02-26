@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5 card shadow-lg p-0 border-0 overflow-hidden" style="border-radius: 20px;">
+            
+            <div class="text-center pt-5 pb-4 px-3" style="background: linear-gradient(135deg, #8e44ad, #6f42c1); color: white;">
+                <div class="mb-3">
+                    <img src="{{ url_for('static', filename='image/edgyTeen.png') }}" 
+                         alt="Profile Photo" 
+                         class="img-fluid rounded-circle border border-4 border-white shadow" 
+                         style="width: 120px; height: 120px; object-fit: cover;">
+                </div>
+                <h2 class="fw-bold mb-0">{{ name }}</h2>
+                <p class="opacity-75 mb-1">@{{ username }}</p>
+                <p class="small mb-0">{{ location }}</p>
+                <p class="small opacity-75">Joined {{ date_joined }}</p>
+            </div>
+
+            <div class="card-body bg-white text-center p-4">
+                <p class="text-muted px-2 mb-4" style="font-size: 0.95rem; line-height: 1.6;">
+                    {{ bio }}
+                </p>
+
+                <div class="row border-top pt-3 mb-4">
+                    <div class="col-4">
+                        <div class="h5 fw-bold mb-0">{{ posts }}</div>
+                        <small class="text-muted text-uppercase" style="font-size: 0.75rem;">Posts</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="h5 fw-bold mb-0">{{ following }}</div>
+                        <small class="text-muted text-uppercase" style="font-size: 0.75rem;">Following</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="h5 fw-bold mb-0">{{ followers }}</div>
+                        <small class="text-muted text-uppercase" style="font-size: 0.75rem;">Followers</small>
+                    </div>
+                </div>
+
+                <div class="d-grid px-4">
+                    <button class="btn btn-lg fw-bold text-white rounded-pill shadow-sm" 
+                            style="background-color: #8e44ad; border: none; transition: 0.3s;">
+                        Follow
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
